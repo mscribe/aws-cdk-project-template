@@ -22,4 +22,4 @@ jobs:
           aws-region: us-east-1
 
       - name: Install AWS CDK
-        run: sudo npm install --global aws-cdk
+        run: npm install --global aws-cdk
