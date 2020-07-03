@@ -23,7 +23,7 @@ jobs:
       run: sudo npm install --global aws-cdk
     - name: Install TaskCat
       run: |
-        pip3 install setuptools wheel --user
-        pip3 install taskcat --user
+        sudo pip3 install setuptools wheel
+        sudo pip3 install taskcat
     - name: Test AWS infrastructure with TaskCat
       run: taskcat test run
