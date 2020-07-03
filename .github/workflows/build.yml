@@ -21,9 +21,9 @@ jobs:
         aws-region: us-east-1
     - name: Install AWS CDK
       run: sudo npm install --global aws-cdk
-    - name: Install taskcat
+    - name: Install TaskCat
       run: |
-        pip3 install setuptools wheel
-        pip3 install taskcat
-    - name: Test AWS infrastructure with taskcat
+        pip3 install setuptools wheel --user
+        pip3 install taskcat --user
+    - name: Test AWS infrastructure with TaskCat
       run: taskcat test run
