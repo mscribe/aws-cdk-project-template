@@ -1,0 +1,29 @@
+name: build
+
+# Triggers the workflow on push or pull request events for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+    - name: Install AWS CDK
+      run: sudo npm install --global aws-cdk
+    - name: Install taskcat
+      run: |
+        pip3 install setuptools wheel
+        pip3 install taskcat
+    - name: Test AWS infrastructure with taskcat
+      run: taskcat test run

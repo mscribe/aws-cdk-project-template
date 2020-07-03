@@ -1,0 +1,7 @@
+project:
+  name: aws-cdk-project-template
+  regions:
+  - us-east-1
+tests:
+  default:
+    template: ./vpc.json
